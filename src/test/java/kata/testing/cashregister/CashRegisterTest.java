@@ -2,6 +2,7 @@ package kata.testing.cashregister;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -10,12 +11,15 @@ import static org.mockito.Mockito.times;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CashRegisterTest {
-    
+
     @Mock
     Purchase stubPurchaseMockito;
 
     @Mock
     Printer mockPrinterMockito;
+
+    @InjectMocks
+    CashRegister cashRegisterMockito;
 
     @Test
     public void should_print_the_real_purchase() {
@@ -46,9 +50,8 @@ public class CashRegisterTest {
     @Test
     public void should_print_the_stub_purchase_using_mockito() {
         when(stubPurchaseMockito.asString()).thenReturn("purchase as string");
-        CashRegister cashRegister = new CashRegister(mockPrinterMockito);
 
-        cashRegister.process(stubPurchaseMockito);
+        cashRegisterMockito.process(stubPurchaseMockito);
 
         verify(mockPrinterMockito, times(1)).print("purchase as string");
     }
