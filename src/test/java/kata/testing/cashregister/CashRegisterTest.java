@@ -16,6 +16,6 @@ public class CashRegisterTest {
 
         cashRegister.process(purchase);
 
-        mockPrinter.verifyThatPrintWasCalledWith();
+        mockPrinter.verifyThatPrintWasCalled();
     }
 }
