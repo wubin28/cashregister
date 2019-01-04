@@ -18,4 +18,15 @@ public class CashRegisterTest {
 
         mockPrinter.verifyThatPrintWasCalled();
     }
+
+    @Test
+    public void should_print_the_stub_purchase() {
+        StubPurchase stubPurchase = new StubPurchase("purchase as string");
+        MockPrinter mockPrinter = new MockPrinter();
+        CashRegister cashRegister = new CashRegister(mockPrinter);
+
+        cashRegister.process(stubPurchase);
+
+        mockPrinter.verifyThatPrintWasCalledWith("purchase as string");
+    }
 }
