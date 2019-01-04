@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 public class MockPrinter extends Printer {
     private boolean printWasCalled = false;
 
-    public void verifyThatPrintWasCalledWith(String receiptContents) {
+    public void verifyThatPrintWasCalledWith() {
         assertTrue("Print was not called. Expect print to be called at least once.", printWasCalled);
     }
 
